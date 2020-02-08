@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  class_time: one
+  date: <%= Date.today %>
+  attendance: 1
+
+two:
+  class_time: one
+  date: <%= Date.today - 3.month %>
+  attendance: 3
+
+three:
+  class_time: one
+  date: <%= Date.today - 11.month %>
+  attendance: 5

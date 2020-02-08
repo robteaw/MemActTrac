@@ -1,0 +1,144 @@
+<% content_tag :div, "", id: "forecast_chart", data: {forecast: @forecasted} %>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title:{
+                text: "Class History"
+            },
+            data: [
+                {
+                    type: "column",
+                    name: "Today's Projected Attendance",
+                    showInLegend: true,
+                    dataPoints: [
+                    <% @todays_classes.each do |tc| %>
+                        {label: "<%= tc.just_time %>", y: <%= tc.forecasted %>},
+                        <% end %>
+                    ]
+                }, {
+                  type: "column",
+                    name: "Last Month's Average Attendances",
+                    showInLegend: true,
+                    dataPoints: [
+                        <% @todays_classes.each do |tc| %>
+                        {label: "<%= tc.just_time %>", y: <%= tc.previous_month_averages(1) %>},
+                        <% end %>
+                    ]
+                }
+            ]
+        });
+        chart.render();
+    }
+</script>
+
+<table id="dashboard">
+  <tr>
+    <th>Today's Class Attendances</th>
+    <th></th>
+  </tr>
+    <!-- Attendance Data 7/21 Work in Progress -->
+    <td>
+      <% if @todays_classes.nil? == false %>
+        <table class="inner">
+          <tr>
+            <th>Class</th>
+            <th>Attendance</th>
+            <th>Forecast</th>
+            <th>Save</th>
+          </tr>
+        <% @todays_classes.each do |tc| %>
+            <tr>
+              <td><%=	tc.just_time %></td>
+              <td>
+                <% x = ClassAttendance.where("class_time_id = ? AND date = ?", tc.id, DateTime.now - 5.hours) %>
+                <% if !x.exists? %>
+                  Not Recorded
+                <% else %>
+                  Attendance Recorded
+                <% end %>
+              </td>
+              <td><%= tc.forecasted %></td>
+              <td><%= link_to '<button id="new">Record Today\'s Attendance</button>'.html_safe, new_class_attendance_path %></td>
+            </tr>
+        <% end %>
+        </table>
+
+    <% end %>
+    </td>
+    <!-- Forecast Data -->
+    <td>
+      <table class="inner">
+        <tr><td>
+
+          <div id="chartContainer" style="height:300px; width: 100%;"></div>
+        </tr></td>
+      </table>
+  <tr>
+    <th>Prospects Scheduled Today</th>
+    <th>Check-In Calls Due Today</th>
+  </tr>
+  <tr>
+    <!-- Prospects data -->
+    <td>
+      <table class="inner">
+        <tr>
+          <th>Prospect</th>
+          <th>Class</th>
+          <th>Showed?</th>
+          <th>Convert To Member</th>
+        </tr>
+        <% @todays_prospects.each do |tp| %>
+          <tr>
+            <td><%= tp.full_name %></td>
+            <td><%= tp.class_time.just_time %></td>
+
+            <% if !tp.showed %>
+            <td><%= tp.human_bool_show %>
+            <%= link_to '<button id="new">Mark Showed</button>'.html_safe, did_show_path(:id => tp.id), method: :post %>
+            </td>
+            <% else %>
+            <td><%= tp.human_bool_show %></td>
+            <% end %>
+
+            <% if !tp.signed_up %>
+            <td>
+              <%= link_to '<button id="create">Convert To Member</button>'.html_safe,
+                          :controller => 'members', :action => 'new', :prospect_fname => tp.fname, :prospect_lname => tp.lname %>
+            </td>
+            <% else %>
+              <td><%= tp.fname %> Signed Up!</td>
+            <% end %>
+
+          </tr>
+        <% end %>
+      </table>
+    </td>
+    <!-- Check in Call Data -->
+    <td>
+      <table class="inner">
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Phone Number</th>
+          <th>Record Call</th>
+        </tr>
+      <% @todays_calls.each do |call| %>
+          <tr>
+            <td><%= call.member.full_name %></td>
+            <td><%= call.is_completed %></td>
+            <td><%= call.member.phone_number %></td>
+            <% if call.completed==nil %>
+            <td><%= link_to '<button id="new">Record Check-in Call</button>'.html_safe, edit_call_path(call) %></td>
+            <% else %>
+            <td><%= link_to 'Edit', edit_call_path(call) %></td>
+            <% end %>
+          </tr>
+      <% end %>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<canvas id="myChart" width="10px" height="10px"></canvas>

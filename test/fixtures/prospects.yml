@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fname: MyString
+  lname: MyString
+  showed: false
+  signed_up: false
+  scheduled_date: 2018-06-27
+  membership_type: one
+  class_time: one
+
+two:
+  fname: MyString
+  lname: MyString
+  showed: false
+  signed_up: false
+  scheduled_date: 2018-06-27
+  membership_type: two
+  class_time: two

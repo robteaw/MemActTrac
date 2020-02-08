@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<h1>Class Attendance</h1>
+
+<fieldset class="show_attendance_fieldset">
+
+<p>
+  <strong>Class Time:</strong>
+  <%= @class_attendance.class_time.class_and_time %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @class_attendance.date %>
+</p>
+
+<p>
+  <strong>Attendance:</strong>
+  <%= @class_attendance.attendance %>
+</p>
+<p></p>
+  <br>
+<%= link_to '<button id="new"> Edit </button>'.html_safe, edit_class_attendance_path(@class_attendance) %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>'.html_safe, class_attendances_path %>
+</fieldset>

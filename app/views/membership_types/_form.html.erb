@@ -1,0 +1,23 @@
+<%= form_with(model: membership_type, local: true) do |form| %>
+  <% if membership_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(membership_type.errors.count, "error") %> prohibited this membership_type from being saved:</h2>
+
+      <ul id="error_bg">
+      <% membership_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <b><%= form.label :membership_type, 'Type' %></b>
+    <%= form.text_field :membership_type, id: :membership_type %>
+  </div>
+<p></p>
+  <div class="actions">
+    <%= form.submit nil, :class => 'submit' %>
+
+  </div>
+<% end %>

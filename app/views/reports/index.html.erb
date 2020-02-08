@@ -1,0 +1,123 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reports</h1>
+<style>
+  #btnPrint{
+    width: 10%;
+    height: 10%;
+
+  }
+  #btnPrint:hover {
+    background-color: #B00100;
+    border-radius: 10px;
+  }
+
+</style>
+<h1>Reports </h1>
+<!--<button id="btnPrint" > Download PDF</button><br><br>-->
+<img src="http://gcaol.com/wp-content/uploads/2017/12/pdf.png" id="btnPrint">
+
+<body>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#btnPrint").live("click", function () {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        var today = monthNames[today.getMonth()] + '/' + dd + '/' + yyyy;
+        var divContents = $("#tblPrint").html();
+
+        var printWindow = window.open('', '', 'height=1200,width=1200');
+        printWindow.document.write('<html><head><title>' + today + '</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+</script>
+<table id="tblPrint" class="report-table">
+  <tr>
+    <th colspan="3">Attendance Report</th>
+    <th class="prospect_report">Check-In Call and Prospect Reports</th>
+  </tr>
+  <tr>
+    <td>
+      <h4><%= (Date.today - 2.month).strftime("%B") %> Average Attendance</h4>
+      <hr>
+      <table class="r-inner">
+        <% @class_times.each do |ct| %>
+          <tr>
+            <td><%= ct.class_and_time %></td>
+            <td><%= ct.previous_month_averages(2) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
+    <td>
+      <h4><%= (Date.today - 1.month).strftime("%B") %> Average Attendance</h4>
+      <hr>
+      <table class="r-inner">
+        <% @class_times.each do |ct| %>
+          <tr>
+            <td><%= ct.class_and_time %></td>
+            <td><%= ct.previous_month_averages(1) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
+    <td id="projected">
+      <h4><%= (Date.today + 1.month).strftime("%B") %> Projected Attendance</h4>
+      <hr>
+      <table class="r-inner">
+        <% @class_times.each do |ct| %>
+          <tr>
+            <td><%= ct.class_and_time %></td>
+            <td><%= ct.project_next_month %></td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
+
+    <td>
+      <h2>Check-In Call Percentage: <span id="percent"><%= @calls_completed_percentage * 100 %></span>%</h2>
+      <h3 id="until">You only need to call <%= @calls_to_75.to_i %> more past due members to get to 75%!</h3>
+      <!-- the following JavaScript conditionally colors the number -->
+      <script>
+        chkn_p = document.getElementById('percent').innerText;
+        if (chkn_p < 75) {document.getElementById('percent').style.color = 'red'}
+        else {document.getElementById('percent').style.color = 'green';
+        document.getElementById('until').style.visibility = 'hidden'}
+      </script>
+      There have been <%= @past_calls_count %> members due for a check-in call<br><br>
+      Your employees have completed <%= @past_calls_count - @past_calls_not_done %> of the scheduled check-in calls<br><br>
+      <% if @upcoming_calls == 1 %>
+        There is 1 check-in call due in the next 30 days<br><br>
+      <% else %>
+      There are <%= @upcoming_calls %> check-in calls due in the next 30 days<br><br>
+      <% end %>
+
+      <hr>
+
+      <h2>Prospect Reporting</h2>
+      <h3>The gym has welcomed <%= @new_members %> new members in the last 30 days!</h3><br><br>
+      In the last 30 days, <%= @last_month_no_shows %> out of <%= @last_month_prospects %> prospects did not show up for their scheduled class<br><br>
+      The gym's all-time percentage of no-shows is <span id='p_percent'><%= @no_show_percentage.round(1) * 100 %></span>%
+      <script>
+        prosp_p = document.getElementById('p_percent').innerText;
+        if (prosp_p < 75) {document.getElementById('p_percent').style.color = 'red'}
+        else {document.getElementById('p_percent').style.color = 'green'};
+      </script>
+
+
+    </td>
+
+  </tr>
+
+
+</table>

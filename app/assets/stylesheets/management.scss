@@ -1,0 +1,33 @@
+// Place all the styles related to the Management controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#management {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+}
+
+/*---Tables---*/
+
+/*border*/
+#management td, #management th {
+  border: 1px solid #ddd;
+  border-color: gray;
+  padding: 8px;
+}
+/*table row*/
+#management tr:nth-child(even){background-color: white;}
+#management tr:nth-child(odd){background-color: #DCDCDC;}
+
+/*hover*/
+//#management tr:hover {background-color: #FFFFE0;}
+
+/*table header*/
+#management th {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}

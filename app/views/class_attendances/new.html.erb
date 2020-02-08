@@ -1,0 +1,63 @@
+<h1>New Class Attendance</h1>
+<p>
+  <b>One or multiple class attendances can be created and saved.</b>
+</p>
+<div class="new_attendance_fieldset">
+  <%= render 'form', class_attendance: @class_attendance %>
+
+  <%= link_to '<button id="back">Back</button>'.html_safe, class_attendances_path %>
+</div></fieldset>
+
+
+
+
+<!--<h1>Record Today's Attendance Attendance</h1>-->
+<!--<div class="fieldset">-->
+  <%#= @todays_classes.each do |tc| %>
+    <%#= render 'form', class_attendance: @class_attendance %>
+  <%# end %>
+
+<!--  <table id="members">-->
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        <th>Class Time</th>-->
+<!--        <th>Date</th>-->
+<!--        <th>Attendance</th>-->
+<!--        <th colspan="3"></th>-->
+<!--      </tr>-->
+<!--    </thead>-->
+    <%#= form_with(model: @class_attendance, local: true) do |form| %>
+
+      <%#= @todays_classes.each do |tc| %>
+        <%# if ClassAttendance.where("class_time_id = ? AND date = ?", tc.id, DateTime.now).exists %>
+<!--          <tbody>-->
+<!--            <td>-->
+              <%#= form.label :class_time_id, 'Class Time' %>
+              <%#= form.collection_select :class_time_id, ClassTime.where("day_of_week like ?", "%Tuesday%").find_each, :id, :just_time, {selected: tc.id} %>
+<!--            </td>-->
+
+<!--            <td>-->
+              <%#= form.label :date %>
+              <%#= form.date_select :date, id: :class_attendance_date %>
+<!--            </td>-->
+
+<!--            <td>-->
+              <%#= form.label :attendance %>
+              <%#= form.number_field :attendance, id: :class_attendance_attendance %>
+<!--            </td>-->
+
+<!--            <td>-->
+              <%#= form.submit 'Save Attendance', :class => 'submit' %>
+<!--            </td>-->
+<!--          </tbody>-->
+        <%# end %>
+
+      <%# end %>
+    <%# end %>
+
+<!--  </table>-->
+
+<!--</div>-->
+
+
+<%#= link_to '<button id="back">Back</button>'.html_safe, class_attendances_path %>

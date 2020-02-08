@@ -1,0 +1,43 @@
+// Place all the styles related to the reports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.report-table {
+  width: 60%;
+  th {
+    border: 1px solid #000;
+    background-color: black; //#999999
+    color: #fff;
+    font-size: 1.5em;
+    padding: 6px;
+  }
+  tr {
+    border: 1px solid #730E15;
+    background-color: #fff;
+  }
+  td {
+    font-family: "Courier New";
+    padding: 0.5px;
+
+  }
+  .r-inner {
+    td {
+      border-bottom: 1px solid black;
+    }
+    td:nth-child(odd) {font-weight: bolder;}
+    td:nth-child(even) {text-align: right;}
+  }
+
+  #projected {
+    background-color: #fff;
+    border-right: 1px solid #000;
+    table, tr, td {
+      background-color: #fff; //#ffcece
+    }
+  }
+
+}
+
+.prospect_report {
+  width: 40%;
+}

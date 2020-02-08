@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iLoveKickboxing</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+  <div class="one">
+    <center><%= image_tag("logo.png", width: '300px') %>
+    </center>
+
+  </div>
+  <div class="two">
+    <ul><center>
+      <li><b><%= link_to image_tag("home.png", width: '20px') + " Home", dashboard_path_path%></b></li>
+      <li><b><%= link_to image_tag("member.gif", width: '20px') + " Member", members_path%></b></li>
+      <li><b><%= link_to image_tag("management.jpg", width: '20px') + " Management", management_path_path%></b></li>
+<!--      <li><b><%#= link_to image_tag("membership.png", width: '20px') + " Membership Type", membership_types_path%></b></li>-->
+<!--      <li><b><%#= link_to image_tag("instructor.png", width: '20px') + " Employee", employees_path%></b></li>-->
+      <li><b><%= link_to image_tag("call.png", width: '20px') + " Call", calls_path%></b></li>
+      <li><b><%= link_to image_tag("class.png", width: '20px') + " Class Attendance", class_attendances_path%></b></li>
+<!--      <li><b><%#= link_to image_tag("time.png", width: '20px') + " Class Time", class_times_path%></b></li>-->
+      <li><b><%= link_to image_tag("prospect.png", width: '20px') + " Prospect", prospects_path%></b></li>
+      <li><b><%= link_to image_tag("forecast.png", width: '20px') + " Forecast", forecast_path_path%></b></li>
+      <li><b><%= link_to image_tag("report.png", width: '20px') + " Report", reports_path_path%></b></li>
+    </center>
+    </ul></div>
+</head>
+
+<body>
+<%= yield %>
+</body>
+</html>

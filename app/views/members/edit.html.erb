@@ -1,0 +1,8 @@
+<h1>Editing Member</h1>
+<fieldset class="new_members_fieldset">
+
+<%= render 'form', member: @member %>
+
+<%= link_to '<button id="new"> Show </button>' .html_safe, @member %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, members_path %>
+</fieldset>

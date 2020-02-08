@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Prospects</h1>
+
+<div class="tooltip"><%= image_tag("help.png", width: '15px') %>Help
+  <span class="tooltiptext">
+    <p>New Prospect - create new prospect</p>
+    <p>Convert to Member - add person as a member</p>
+    <p>Prospect Showed - change person to showed</p>
+    <p>Edit - edit row specific prospect</p>
+  </span>
+</div>
+
+<%= link_to '<button id="new">New Prospect</button>'.html_safe, new_prospect_path %>&nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new">No Shows</button>'.html_safe, find_no_shows_path(showed: 0) %></p>
+<table id="prospects">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Convert</th>
+      <th>Showed</th>
+      <th>Signed Up?</th>
+      <th>Scheduled Date</th>
+      <th>Trial Type</th>
+      <th>Class Time</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prospects.each do |prospect| %>
+      <tr>
+          <td><%= link_to prospect.full_name, prospect %></td>
+          <td>
+            <%= link_to '<button id="create">Convert to Member</button>'.html_safe,
+                        :controller => 'members', :action => 'new', :prospect_fname => prospect.fname, :prospect_lname => prospect.lname %>
+          </td>
+          <td>
+            <%= prospect.human_bool_show %>&nbsp;&nbsp;&nbsp;
+            <%= link_to '<button id="new">Prospect Showed</button>'.html_safe, did_show_path(:id => prospect.id), method: :post %>
+          </td>
+          <td><%= prospect.human_bool_su %></td>
+          <td><%= prospect.scheduled_date %></td>
+          <td><%= prospect.membership_type.membership_type %></td>
+          <td><%= prospect.class_time.start_time.strftime('%H:%M') %></td>
+          <td><%= link_to 'Edit', edit_prospect_path(prospect) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<div class="pagination">
+  <div class="page_info">
+    <%= page_entries_info @prospect %>
+  </div>
+  <%= will_paginate @prospect, :container => false %>
+</div>
+

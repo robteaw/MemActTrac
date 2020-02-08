@@ -1,0 +1,9 @@
+<h1>Editing Employee</h1>
+<fieldset class="new_employee_fieldset">
+
+<%= render 'form', employee: @employee %>
+<p></p>
+
+<%= link_to '<button id="new"> Show </button>'.html_safe, @employee %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, employees_path %>
+</fieldset>

@@ -1,0 +1,26 @@
+<%= form_for :prospect do |form| %>
+
+
+  <div class="field">
+    <%= form.label :fname, 'First Name' %>
+    <%= form.text_field :fname, id: :prospect_fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lname, 'Last Name' %>
+    <%= form.text_field :lname, id: :prospect_lname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number, 'Phone Number' %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :membership_type, 'Membership Type' %>
+    <%= form.collection_select :membership_type_id, MembershipType.where(id: 1...5), :id, :membership_type %>
+  </div>
+
+
+
+<% end %>

@@ -1,0 +1,43 @@
+<%= form_with(model: call, local: true) do |form| %>
+  <% if call.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(call.errors.count, "error") %> prohibited this call from being saved:</h2>
+
+      <ul id="error_bg">
+      <% call.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :member_id %>
+    <%= form.collection_select :member_id, Member.all, :id, :fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :employee_id %>
+    <%= form.collection_select :employee_id, Employee.where("deleted_at IS NULL"), :id, :full_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :outcome %>
+    <%= form.select :outcome, ['Left Message', 'Spoke to Someone'] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :due_date, 'Due Date' %>
+    <%= form.date_select :due_date, id: :call_due_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :completed %>
+    <%= form.date_select :completed, id: :call_completed %>
+  </div>
+<p></p>
+  <div class="actions">
+    <%= form.submit nil, :class => 'submit' %>
+
+  </div>
+<% end %>

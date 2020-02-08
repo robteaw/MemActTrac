@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<h1>Prospect</h1>
+
+<fieldset class="show_prospect_fieldset">
+
+<p>
+  <strong>First Name:</strong>
+  <%= @prospect.fname %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @prospect.lname %>
+</p>
+
+<p>
+  <strong>Showed:</strong>
+  <%= @prospect.showed %>
+</p>
+
+<p>
+  <strong>Signed Up:</strong>
+  <%= @prospect.signed_up %>
+</p>
+
+<p>
+  <strong>Scheduled Date:</strong>
+  <%= @prospect.scheduled_date %>
+</p>
+
+<p>
+  <strong>Trial Type:</strong>
+  <%= @prospect.membership_type.membership_type %>
+</p>
+
+<p>
+  <strong>Class Time:</strong>
+  <%= @prospect.class_time.class_and_time %>
+</p>
+
+<br>
+<%= link_to '<button id="new"> Edit </button>'.html_safe, edit_prospect_path(@prospect) %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>'.html_safe, prospects_path %>
+</fieldset>

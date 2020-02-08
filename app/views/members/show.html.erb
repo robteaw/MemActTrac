@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<h1>Member</h1>
+
+<fieldset class="show_members_fieldset">
+
+<p>
+  <strong>First Name:</strong>
+  <%= @member.fname %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @member.lname %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @member.phone_number %>
+</p>
+
+<p>
+  <strong>Membership Type:</strong>
+  <%= @member.membership_type.membership_type %>
+</p>
+<br>
+<%= link_to '<button id="new"> Edit </button>' .html_safe, edit_member_path(@member) %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, members_path %>
+</fieldset>

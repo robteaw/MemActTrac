@@ -1,0 +1,9 @@
+<h1>Editing Call</h1>
+<div class="fieldset">
+<%= render 'form', call: @call %>
+
+  <p></p>
+<%= link_to ' <button id="new"> Show </button>'.html_safe,  @call %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>'.html_safe, request.referrer, notice: "Call recorded" %>
+</div>
+

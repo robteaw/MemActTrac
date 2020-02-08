@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Class Attendances</h1>
+
+<div class="tooltip"><%= image_tag("help.png", width: '15px') %>Help
+  <span class="tooltiptext">
+    <p>Record Today's Attendance - create new class attendance</p>
+    <p>Search By Date - input start/end date and search dates in between</p>
+    <p>Show - show row specific class attendance</p>
+    <p>Edit - edit row specific class attendance</p>
+    <p>Delete - delete row specific class attendance</p>
+  </span>
+</div>
+
+<%= link_to '<button id="new">Record Today\'s Attendance</button>'.html_safe, new_class_attendance_path %>
+
+<!-- It was decided that searching by class was unnecessary for reporting
+     and the functionality is only really needed for forecasting-->
+<!--<span>-->
+  <%#= form_tag(class_attendances_path, method: :get) do  %>
+    <%#= text_field_tag :class_time, params[:class_time] %>
+    <%#= submit_tag 'Search', name: nil %>
+  <%# end %>
+<!--</span>-->
+
+
+<span>
+  <%= form_tag(class_attendances_path, method: :get) do %>
+    <p><b>Search attendances in date range</b></p>
+    <b>Start Date </b><%= date_field_tag "start_date", params[:start_date], :class => "date" %>
+    <b>End Date </b><%= date_field_tag "end_date", params[:end_date], :class => "date" %>
+    <%= submit_tag 'Search By Date', name: nil, :class => 'search' %>
+  <% end %>
+</span>
+<br>
+
+<table id="members">
+  <thead>
+    <tr>
+      <th>Class Time</th>
+      <th>Date</th>
+      <th>Attendance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @class_attendances.each do |class_attendance| %>
+      <tr>
+        <td><%= class_attendance.class_time.class_and_time %></td>
+        <td><%= class_attendance.date %></td>
+        <td><%= class_attendance.attendance %></td>
+        <td><%= link_to 'Show', class_attendance %></td>
+        <td><%= link_to 'Edit', edit_class_attendance_path(class_attendance) %></td>
+        <td><%= link_to 'Delete', class_attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%#= will_paginate @class_attendance, :id => 'paginate' %>
+
+<div class="pagination">
+  <div class="page_info">
+    <%= page_entries_info @class_attendance %>
+  </div>
+  <%= will_paginate @class_attendance, :container => false %>
+</div>
+<!--, renderer: BootstrapPagination::Rails-->

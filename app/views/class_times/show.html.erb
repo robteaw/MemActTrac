@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<h1>Class Time</h1>
+
+<fieldset class="show_time_fieldset">
+
+<p>
+  <strong>Day of Week:</strong>
+  <%= @class_time.day_of_week %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @class_time.start_time %>
+</p>
+  <br>
+<%= link_to '<button id="new"> Edit </button>' .html_safe, edit_class_time_path(@class_time) %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, class_times_path %>
+</fieldset>

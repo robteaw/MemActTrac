@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member: one
+  employee: one
+  outcome: MyString
+  due_date: 2018-06-27
+  completed: 2018-06-27
+
+two:
+  member: two
+  employee: two
+  outcome: MyString
+  due_date: 2018-06-27
+  completed: 2018-06-27

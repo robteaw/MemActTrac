@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<h1>Employee</h1>
+
+<fieldset class="show_employee_fieldset">
+
+<p>
+  <strong>First Name:</strong>
+  <%= @employee.fname %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @employee.lname %>
+</p>
+<br>
+<%= link_to '<button id="new"> Edit </button>' .html_safe, edit_employee_path(@employee) %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, employees_path %>
+</fieldset>

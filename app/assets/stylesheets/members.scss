@@ -1,0 +1,249 @@
+// Place all the styles related to the Calls controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Most of the Font styling that manages the overall GUI are in the Members.scss
+
+#members {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+}
+
+/*---Tables---*/
+
+/*border*/
+#members td, #members th {
+  border: 1px solid #ddd;
+  border-color: gray;
+  padding: 8px;
+}
+
+/*table row*/
+#members tr:nth-child(even){background-color: white;}
+#members tr:nth-child(odd){background-color: #DCDCDC;}
+
+/*hover*/
+#members tr:hover {background-color: #FFFFE0;}
+
+/*table header*/
+#members th {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+/*---Buttons---*/
+
+#new {
+  color: white;
+  background: black;
+  border: 1px lightslategray solid;
+  box-shadow: inset 0 1px 0 gray;
+  font-size: 15px;
+  padding: 5px;
+}
+
+#new:hover {
+  border: 1px #2F5BB7 solid;
+  box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 black;
+  color: black;
+  background: whitesmoke;
+}
+
+#new:active {
+  box-shadow: inset 0 2px 5px black;
+}
+
+#back {
+  color: white;
+  background: black;
+  border: 1px lightslategray solid;
+  box-shadow: inset 0 1px 0 gray;
+  font-size: 15px;
+  padding: 5px 5px;
+}
+
+#back:hover {
+  border: 1px #2F5BB7 solid;
+  box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 black;
+  color: black;
+  background: whitesmoke;
+}
+
+#back:active {
+  box-shadow: inset 0 2px 5px black;
+}
+
+.submit {
+  color: white;
+  background: black;
+  border: 1px lightslategray solid;
+  box-shadow: inset 0 1px 0 gray;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.submit:hover {
+  border: 1px #2F5BB7 solid;
+  box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 black;
+  color: black;
+  background: whitesmoke;
+}
+
+.submit:active {
+  box-shadow: inset 0 2px 5px black;
+}
+
+
+.show {
+  color: white;
+  background: green;
+  border: 1px lightslategray solid;
+  box-shadow: inset 0 1px 0 gray;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.show:hover {
+  border: 1px #2F5BB7 solid;
+  box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 black;
+  color: black;
+  background: whitesmoke;
+}
+
+.show:active {
+  box-shadow: inset 0 2px 5px black;
+}
+
+.action {
+  color: white;
+  background: green;
+  border: 1px lightslategray solid;
+  box-shadow: inset 0 1px 0 gray;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.action:hover {
+  border: 1px #2F5BB7 solid;
+  box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 black;
+  color: black;
+  background: whitesmoke;
+}
+
+/*---Fields---*/
+
+.field {
+  display: inline-block;
+  padding-right: 20px;
+  font-weight: bold;
+}
+
+.fieldset {
+  background-color: whitesmoke;
+  border-color: #6A5750;
+  border-style: solid;
+  border-width: 2px;
+  padding: 6px;
+  width: 51%;
+}
+
+.new_members_fieldset {
+  background-color: whitesmoke;
+  border-color: #6A5750;
+  border-style: solid;
+  border-width: 2px;
+  padding: 6px;
+  width: 45%;
+}
+
+.show_members_fieldset {
+  background-color: whitesmoke;
+  border-color: #6A5750;
+  border-style: solid;
+  border-width: 2px;
+  padding: 6px;
+  width: 25%;
+}
+
+/*---Error Message---*/
+
+//#error {
+//  color: white;
+//}
+
+#error_bg {
+  background-color: whitesmoke;
+}
+
+/*---Tooltip---*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  float: right;
+  margin-right: 150px;
+  background: whitesmoke;
+  font-weight: bold;
+  color: black;
+  padding: 5px;
+  margin-top: -35px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: gray;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px;
+  text-align: left;
+  width: 250px;
+  border: 2px solid black;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -130px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/*---Search---*/
+.search {
+  color: white;
+  background: black;
+  border: 1px lightslategray solid;
+  box-shadow: inset 0 1px 0 gray;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.search:hover {
+  border: 1px #2F5BB7 solid;
+  box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 black;
+  color: black;
+  background: whitesmoke;
+}
+
+.search:active {
+  box-shadow: inset 0 2px 5px black;
+}
+
+.name {
+  border: 1px lightslategray solid;
+  font-size: 15px;
+  padding: 3px;
+  width: 140px;
+}

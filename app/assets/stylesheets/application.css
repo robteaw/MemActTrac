@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.one {
+    background-color: black;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #6A5750;
+    color: white;
+    font-family: inherit;
+}
+.two {
+    background-color: darkred;
+    border-color: #6A5750;
+    border-style: solid;
+    border-width: 3px;
+}
+
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+h1 {
+    color: black;
+    font-family: inherit;
+}
+
+/*---Link---*/
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkred;
+
+}
+
+.two li a {
+    color:white;
+}
+
+
+li {
+    display: inline-block;
+    float: left;
+    list-style-type: square;
+}
+
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: black;
+}
+
+
+li a:hover {
+    font-weight: bold;
+    color: black;
+    background-color: ghostwhite;
+    opacity: 0.7;
+}
+
+/*---Mouse over Link---*/
+a:hover {
+    background-color: lightgray;
+    color:black;
+}
+
+/*---Unvisited Link---*/
+a:link {
+    text-decoration:none;
+    color:black;
+}
+
+/*---Visited Link---*/
+a:visited {
+    font-weight: bold;
+    color:black;
+    background-color: lightgray;
+}
+
+/*---Selected Link---*/
+a:active {
+    font-weight: bold;
+    color:white;
+    background-color: #666666;
+}
+

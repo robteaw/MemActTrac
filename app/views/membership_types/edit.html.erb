@@ -1,0 +1,8 @@
+<h1>Editing Membership Type</h1>
+<fieldset class="new_membership_fieldset">
+
+<%= render 'form', membership_type: @membership_type %>
+
+<%= link_to '<button id="new"> Show </button>'.html_safe, @membership_type %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>'.html_safe, membership_types_path %>
+</fieldset>

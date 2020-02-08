@@ -1,0 +1,58 @@
+<table id="management">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>
+      <h2>
+        <%#= link_to 'Manage Membership Types', 'membership_types' %>
+        <b><%= link_to image_tag("membership.png", width: '30px') + " Manage Membership Types", membership_types_path%></b>
+      </h2>
+    </td>
+
+    <td>
+      <p>
+        This link allows you to update and change the different types of membership offered<br>
+        to your members.  Keep in mind, this information will likely come from corporate<br>
+        and unless there are new membership types being offered by the corporate office, there<br>
+        is probably no good reason to edit anything on this page. Deleting the membership types<br>
+        will only mark them as inactive and can be reactivated at any time.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h2>
+        <%#= link_to 'Manage Employees', 'employees' %>
+        <b><%= link_to image_tag("instructor.png", width: '30px') + " Manage Employees", employees_path%></b>
+      </h2>
+    </td>
+
+    <td>
+      <p>
+        The employee page is where you can add, edit, or remove employees from the system. Be<br>
+        aware, that even if you delete an employee, their data will still remain in the system.<br>
+        This is because the call records must be maintained with the employee's information.  Deleting <br>
+        the employee will simply mark them as inactive and they can be reactivated at any time.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h2>
+        <%#= link_to 'Manage Class Times', 'class_times' %>
+        <b><%= link_to image_tag("time.png", width: '30px') + " Manage Class Times", class_times_path%></b>
+      </h2>
+    </td>
+
+    <td>
+      Class times are the scheduled weekly classes you have.  Although this information is not likely<br>
+      to change very often, it is still important that you be able to edit any information. Keep in<br>
+      mind that if you delete a class, its data will still remain in the system.  This is to maintain<br>
+      historical accuracy of class attendance records.  Also keep in mind, the forecasting functions<br>
+      have not been tested in the event of deleting a class entirely. Deleting a class will only<br>
+      mark it as inactive and can be reactivated at any time.
+    </td>
+  </tr>
+</table>

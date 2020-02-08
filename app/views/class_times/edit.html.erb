@@ -1,0 +1,8 @@
+<h1>Editing Class Time</h1>
+<fieldset class="new_time_fieldset">
+
+<%= render 'form', class_time: @class_time %>
+
+<%= link_to '<button id="new"> Show </button>' .html_safe, @class_time %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, class_times_path %>
+</fieldset>

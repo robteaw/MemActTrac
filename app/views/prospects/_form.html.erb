@@ -1,0 +1,43 @@
+<%= form_with(model: prospect, local: true) do |form| %>
+  <% if prospect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prospect.errors.count, "error") %> prohibited this prospect from being saved:</h2>
+
+      <ul id="error_bg">
+      <% prospect.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fname, 'First Name' %>
+    <%= form.text_field :fname, id: :prospect_fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lname, 'Last Name' %>
+    <%= form.text_field :lname, id: :prospect_lname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scheduled_date, 'Scheduled Date' %>
+    <%= form.date_select :scheduled_date, id: :prospect_scheduled_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :membership_type_id, 'Membership Type' %>
+    <%= form.collection_select :membership_type_id, MembershipType.where("id BETWEEN 5 AND 8 AND deleted_at IS NULL"), :id, :membership_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :class_time_id, 'Class Time' %>
+    <%= form.collection_select :class_time_id, ClassTime.where("deleted_at IS NULL"), :id, :class_and_time %>
+  </div>
+<p></p>
+  <div class="actions">
+    <button onclick="<% form.submit%>" id="create">Save Prospect</button>
+  </div>
+
+<% end %>

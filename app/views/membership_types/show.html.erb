@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<h1>Membership Type</h1>
+
+<fieldset class="show_membership_fieldset">
+
+<p>
+  <strong>Type:</strong>
+  <%= @membership_type.membership_type %>
+</p>
+<br>
+<%= link_to '<button id="new"> Edit </button>' .html_safe, edit_membership_type_path(@membership_type) %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="back"> Back </button>' .html_safe, membership_types_path %>
+</fieldset>

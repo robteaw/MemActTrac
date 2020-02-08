@@ -1,0 +1,108 @@
+<% if @todays_classes.nil? == false %>
+
+  <%= @todays_classes.each do |tc| %>
+
+    <%= form_with(model: class_attendance, local: true) do |form| %>
+      <% if class_attendance.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(class_attendance.errors.count, "error") %> prohibited this class_attendance from being saved:</h2>
+
+          <ul id="error_bg">
+            <% class_attendance.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!--    if the record exists-->
+      <!-- as of 7/12, there is a weird +x hours thing going on that's making this form have
+       unexpected results -->
+      <% x = ClassAttendance.where("class_time_id = ? AND date = ?", tc.id, DateTime.now - 5.hours) %>
+      <% if !x.exists? %>
+
+        <div class="field">
+          <%= form.label :class_time_id, 'Class Time' %>
+          <%= form.collection_select :class_time_id, ClassTime.where("day_of_week like ?", "%#{@today}%").find_each, :id, :just_time, {selected: tc.id} %>
+          <%#= form.collection_select :class_time_id, ClassTime.all, :id, :just_time %>
+        </div>
+
+        <div class="field">
+          <%= form.label :date %>
+          <%= form.date_select :date, id: :class_attendance_date %>
+        </div>
+
+        <div class="field">
+          <%= form.label :attendance %>
+          <%= form.number_field :attendance, id: :class_attendance_attendance %>  &nbsp;&nbsp;
+<!--        </div>-->
+<!--        <p></p>-->
+<!--        <div class="actions">-->
+          <%= form.submit 'Save Attendance', :class => 'class_submit' %>
+        </div><br><br><br>
+
+        <!--      if record doesn't exist-->
+      <% elsif x.exists? %>
+        <div class="field">
+          <%= form.label :class_time_id, 'Class Time' %>
+          <%= form.collection_select :class_time_id, ClassTime.where("day_of_week like ?", "%#{@today}%").find_each, :id, :just_time, {selected: tc.id}, :disabled => :true %>
+        </div>
+
+        <div class="field">
+          <%= form.label :date %>
+          <%= form.date_select :date, id: :class_attendance_date, :disabled => :true %>
+        </div>
+
+        <div class="field">
+          <%= form.label 'Already Recorded' %>
+
+        </div>
+        <div class="actions">
+          <!-- getting stuck on this functionality -->
+          <%#= link_to '<button id="new">Edit This Class</button>'.html_safe, edit_class_attendance_path(x.id) %>
+        </div>
+
+
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+
+<% else %>
+
+  <%= form_with(model: class_attendance, local: true) do |form| %>
+    <% if class_attendance.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(class_attendance.errors.count, "error") %> prohibited this class_attendance from being
+          saved:</h2>
+
+        <ul>
+          <% class_attendance.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :class_time_id %>
+      <%= form.text_field :class_time_id, id: :class_attendance_class_time_id %>
+    </div>
+
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.date_select :date, id: :class_attendance_date %>
+    </div>
+
+    <div class="field">
+      <%= form.label :attendance %>
+      <%= form.number_field :attendance, id: :class_attendance_attendance %>
+    </div>
+    <p></p>
+    <div class="actions">
+      <%= form.submit nil, :class => 'class_submit' %>
+    </div>
+  <% end %>
+
+<% end %>

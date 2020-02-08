@@ -1,0 +1,8 @@
+<h1>Editing Class Attendance</h1>
+<fieldset class="new_attendance_fieldset">
+
+<%= render 'form', class_attendance: @class_attendance %>
+<p></p>
+<%= link_to '<button id="new"> Show </button>'.html_safe, @class_attendance %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, class_attendances_path %>
+</fieldset>

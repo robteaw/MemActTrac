@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Employees</h1>
+
+<div class="tooltip"><%= image_tag("help.png", width: '15px') %>Help
+  <span class="tooltiptext">
+    <p>New Employee - create new employee</p>
+    <p>Show - show row specific employee</p>
+    <p>Edit - edit row specific employee</p>
+    <p>Delete - delete row specific employee</p>
+  </span>
+</div>
+
+<p><%= link_to '<button id="new">New Employee</button>'.html_safe, new_employee_path %></p>
+
+<table id="members">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.fname %></td>
+        <td><%= employee.lname %></td>
+        <td><%= link_to 'Show', employee %></td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Delete', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% @deleted_employees.each do |de| %>
+      <tr style="background-color:lightcoral;">
+        <td><%= de.fname %></td>
+        <td><%= de.lname %> (INACTIVE)</td>
+        <td><%= link_to 'Show', de %></td>
+        <td><%= link_to 'Edit', edit_employee_path(de) %></td>
+        <td><%= link_to '<button id="new">Reactivate</button>'.html_safe, reactivate_path(:id => de.id), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+
+

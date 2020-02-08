@@ -1,0 +1,8 @@
+<h1>Editing Prospect</h1>
+<fieldset class="new_prospect_fieldset">
+
+<%= render 'form', prospect: @prospect %>
+
+<%= link_to '<button id="new"> Show </button>' .html_safe, @prospect %> &nbsp;&nbsp;&nbsp;
+<%= link_to '<button id="new"> Back </button>' .html_safe, prospects_path %>
+</fieldset>

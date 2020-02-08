@@ -1,0 +1,51 @@
+<%= form_with(model: member, local: true) do |form| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul id="error_bg">
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<form>
+  <div class="field">
+    <% if params[:prospect_fname] != nil %>
+      <%= form.label :fname, 'First Name' %>
+      <%= form.text_field :fname, id: :member_fname, :value => params[:prospect_fname] %>
+    <% else %>
+      <%= form.label :fname, 'First Name' %>
+      <%= form.text_field :fname, id: :member_fname %>
+     <% end %>
+  </div>
+
+  <div class="field">
+    <% if params[:prospect_lname] != nil %>
+      <%= form.label :lname, 'Last Name' %>
+      <%= form.text_field :lname, id: :member_lname, :value => params[:prospect_lname] %>
+    <% else %>
+      <%= form.label :lname, 'Last Name' %>
+      <%= form.text_field :lname, id: :member_lname %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number, 'Phone Number' %>
+    <%= form.text_field :phone_number, id: :member_phone_number, placeholder: "(XXX) XXX-XXXX" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :membership_type_id, 'Membership Type' %>
+    <%= form.collection_select :membership_type_id, MembershipType.where("id BETWEEN 1 AND 4 AND deleted_at IS NULL"), :id, :membership_type %>
+  </div>
+
+<p></p>
+  <div class="actions">
+    <%= form.submit nil, :class => 'submit' %>
+<!--    <button onclick="<%# form.submit%>" id="create">Create Member</button>-->
+  </div>
+
+</form>
+<% end %>
