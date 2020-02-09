@@ -60,3 +60,4 @@ gem 'jquery'
 gem 'jquery-rails'
 
 gem 'acts_as_paranoid', '~> 0.6.0'
+
